@@ -1,0 +1,16 @@
+services:
+  app:
+    image: todo-frontend-dev
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./:/usr/src/app
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:3000/
+      - WATCHPACK_POLLING=true
+      - WDS_SOCKET_HOST=127.0.0.1
+      - WDS_SOCKET_PORT=8000
+    ports:
+      - 8000:3000
+    container_name: todo-frontend-dev
